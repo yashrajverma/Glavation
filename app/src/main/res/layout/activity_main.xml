@@ -4,8 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yashraj.glavage.MainActivity">
-
+    tools:context="com.yashraj.glavage.MainActivity"
+    android:background="@color/background"
+    >
+    <ImageView
+        android:id="@+id/glavation_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/group_1"
+        android:layout_marginTop="80dp"
+        />
+    <ImageView
+        android:src="@drawable/vector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"/>
+    <ImageView
+     android:layout_marginTop="100dp"
+        android:src="@drawable/vector2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"/>
+    <ImageView
+        android:src="@drawable/charco_pet_9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
     <com.google.android.gms.common.SignInButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
