@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "921441103255",
+    "project_id": "glavage-d3e30",
+    "storage_bucket": "glavage-d3e30.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:921441103255:android:fb593a6fb1705739f968d2",
+        "android_client_info": {
+          "package_name": "com.yashraj.glavage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "921441103255-jlhu86ssg8daueer43ac9tmsvs8vk9b2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsXj6Ve9Dp_UT_v2IaesfCH2S91C6duks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "921441103255-jlhu86ssg8daueer43ac9tmsvs8vk9b2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
