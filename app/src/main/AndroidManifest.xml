@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.yashraj.glavage">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,13 +12,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Glavage">
-        <activity android:name=".ProfileActivity"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".vendor.VendorDashboardActivity"></activity>
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".vendor.DhobiLoginActivity" />
+        <activity android:name=".vendor.RegistrationActivity" />
+        <activity android:name=".student.SettingActivity" />
+        <activity android:name=".student.AddClothesActivity" />
+        <activity android:name=".student.DashBoardActivity" />
+        <activity android:name=".student.ProfileActivity" />
+        <activity android:name=".student.MainActivity">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
     </application>
 

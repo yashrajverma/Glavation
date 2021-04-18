@@ -1,2 +1,3 @@
+include ':dhobiapplication'
 include ':app'
-rootProject.name = "Glavage"
+rootProject.name = "Glavation"

@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"/>
     <ImageView
-     android:layout_marginTop="100dp"
+        android:layout_marginTop="100dp"
         android:src="@drawable/vector2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,16 +31,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
-    <com.google.android.gms.common.SignInButton
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/sign_in_button"
+        android:id="@+id/student_button"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="20dp"
+        android:foregroundTint="@color/white">
 
-    </com.google.android.gms.common.SignInButton>
+    </Button>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/vendor_button"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp" android:layout_above="@id/student_button">
+
+    </Button>
 
 
 </RelativeLayout>

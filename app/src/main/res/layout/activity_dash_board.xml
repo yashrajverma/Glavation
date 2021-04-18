@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".student.DashBoardActivity">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/toolbarcard"
+        app:cardElevation="3dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/image_card"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                app:cardCornerRadius="50dp">
+                <ImageView
+                    android:id="@+id/user_dashboard_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_baseline_local_laundry_service_24"
+                    />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text="Name"
+                android:textColor="@color/background"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_toRightOf="@id/image_card"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
+
+                />
+            <ImageView
+                android:id="@+id/settings_img_button"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_baseline_settings_24"
+                app:tint="@color/background"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_clothes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="36dp"
+        android:contentDescription="laundry"
+        android:src="@drawable/ic_baseline_local_laundry_service_24"
+        app:backgroundTint="@color/purple_200"
+        app:rippleColor="#FFFFFF" />
+
+
+</RelativeLayout>

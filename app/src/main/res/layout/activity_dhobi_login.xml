@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".vendor.DhobiLoginActivity"
+    android:background="@color/background">
+    <ImageView
+        android:id="@+id/glavation_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/group_1" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/vector" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/vector2" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/charco_pet_9" />
+
+
+    <RelativeLayout
+        android:id="@+id/phoneAuth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Phone Number"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/ccp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    app:ccp_defaultNameCode="IN" />
+
+                <EditText
+                    android:id="@+id/phoneEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="98933-23467"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:inputType="phone"
+                    android:singleLine="true"
+                    android:backgroundTint="@android:color/white"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!--        android:drawableLeft="@drawable/password"-->
+    <EditText
+        android:id="@+id/codeEditText"
+        android:layout_width="355dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/phoneAuth"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
+        android:backgroundTint="@android:color/white"
+        android:drawableTint="@android:color/white"
+        android:drawableLeft="@android:drawable/ic_lock_idle_lock"
+        android:hint="Enter code here..."
+        android:inputType="phone"
+        android:singleLine="true"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/continueNextButton"
+        android:layout_width="129dp"
+        android:layout_height="58dp"
+        android:layout_below="@+id/codeEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Continue"
+        android:textAllCaps="false"
+        android:textColor="@color/background"
+        android:backgroundTint="@android:color/white"
+        android:elevation="10dp"
+        android:textSize="20sp" />
+
+</RelativeLayout>
