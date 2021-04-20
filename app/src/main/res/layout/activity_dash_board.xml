@@ -57,6 +57,13 @@
                 />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/card_dashboard"
+        tools:listitem="@layout/card_image"
+        android:layout_marginTop="5dp"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add_clothes"

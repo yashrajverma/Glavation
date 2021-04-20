@@ -49,13 +49,14 @@ public class DhobiLoginActivity extends AppCompatActivity {
     private String TAG;
     private FirebaseUser mUser;
     private DatabaseReference databaseReference;
+    FirebaseOptions options;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dhobi_login);
-        FirebaseOptions options = new FirebaseOptions.Builder()
+       options= new FirebaseOptions.Builder()
                 .setProjectId("glavage-d3e30")
                 .setApplicationId("1:921441103255:android:37c13ab34380fbecf968d2")
                 .setApiKey("AIzaSyBsXj6Ve9Dp_UT_v2IaesfCH2S91C6duks")
@@ -214,8 +215,10 @@ public class DhobiLoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if(mAuth!=null){
-            mAuth.addAuthStateListener(authStateListener);
+       if( options.getApplicationId().equals("1:921441103255:android:37c13ab34380fbecf968d2")){
+           if(mAuth!=null){
+               mAuth.addAuthStateListener(authStateListener);
+           }
         }
     }
 

@@ -73,18 +73,24 @@
             android:textColor="@color/white"
             android:textSize="20sp" />
 
-        <com.google.android.material.textfield.TextInputLayout
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+
+<!--            android:textColorHint="@color/black">-->
+
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/hostel_editText"-->
+
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent" />-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+        <Spinner
+            android:id="@+id/hostel_spinner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
-            android:textColorHint="@color/black">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/hostel_editText"
-
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </com.google.android.material.textfield.TextInputLayout>
+            android:background="@color/white"
+            />
 
         <TextView
             android:layout_width="wrap_content"

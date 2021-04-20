@@ -1,47 +1,40 @@
 package com.yashraj.glavage.student;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.Spinner;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
 import com.yashraj.glavage.R;
+import com.yashraj.glavage.student.Adapters.ClothREcyclerAdapter;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import android.app.ProgressDialog;
-
-import static java.lang.Long.parseLong;
 
 public class AddClothesActivity extends AppCompatActivity {
     Spinner sp;
@@ -58,8 +51,8 @@ public class AddClothesActivity extends AppCompatActivity {
     private ProgressDialog progressBar;
     private RecyclerView recyclerView;
     private List<Model> modelList;
+    private ClothREcyclerAdapter clothREcyclerAdapter;
 
-    private FirebaseRecyclerAdapter<Model,ModelViewHolder> firebaseRecyclerAdapter;
 
 
 
@@ -74,7 +67,7 @@ public class AddClothesActivity extends AppCompatActivity {
         String userid=muser.getUid();
         progressBar=new ProgressDialog(this);
         mStorage= FirebaseStorage.getInstance().getReference();
-        databaseReference= FirebaseDatabase.getInstance().getReference().child("userDatabase").child(userid);
+        databaseReference= FirebaseDatabase.getInstance().getReference().child("userDatabase").child(userid).child(userid);
 
         modelList=new ArrayList<>();
 
@@ -103,6 +96,7 @@ public class AddClothesActivity extends AppCompatActivity {
                 startActivityForResult(galleryIntent,GALLERY_CODE);
             }
         });
+        loadData();
 
     }
 
@@ -150,49 +144,41 @@ public class AddClothesActivity extends AppCompatActivity {
             });
 
         }
+
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        loadData();
-    }
-
-    public void loadData(){
-        FirebaseRecyclerOptions<Model> options
-            =new FirebaseRecyclerOptions.Builder<Model>().setQuery(databaseReference,Model.class).build();
-            firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Model, ModelViewHolder>(options) {
-                @Override
-                protected void onBindViewHolder(@NonNull ModelViewHolder modelViewHolder, int i, @NonNull Model model) {
-                    modelViewHolder.cloth_type.setText(model.getCloth_type());
-                    DateFormat dateFormat=DateFormat.getDateInstance();
-                    String formattedate=dateFormat.format(new Date(parseLong(model.getDateadded())).getTime());
-                    modelViewHolder.dataAdded.setText(formattedate);
-                    String image_url=model.getImage();
-                    Picasso.get().load(image_url).into(modelViewHolder.image);
-
+public void loadData(){
+        databaseReference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                if(snapshot.exists()){
+                    Model model=snapshot.getValue(Model.class);
+                    modelList.add(model);
+                    clothREcyclerAdapter=new ClothREcyclerAdapter(getApplicationContext(),modelList);
+                    recyclerView.setAdapter(clothREcyclerAdapter);
+                    clothREcyclerAdapter.notifyDataSetChanged();
                 }
+            }
 
-                @NonNull
-                @Override
-                public ModelViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                    View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.card_image,parent,false);
-                    return new ModelViewHolder(view);
-                }
-            };
-            firebaseRecyclerAdapter.startListening();
-            recyclerView.setAdapter(firebaseRecyclerAdapter);
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-    }
+            }
 
-    private static class ModelViewHolder extends RecyclerView.ViewHolder{
-        TextView dataAdded,cloth_type;
-        ImageView image;
-        public ModelViewHolder(@NonNull View itemView) {
-            super(itemView);
-            dataAdded=itemView.findViewById(R.id.date_added_textView);
-            cloth_type=itemView.findViewById(R.id.cloth_type_textView);
-            image=itemView.findViewById(R.id.card_cloth_image);
-        }
-    }
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+}
 }

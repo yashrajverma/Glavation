@@ -16,8 +16,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.yashraj.glavage.R;
 
 import java.util.HashMap;
@@ -42,7 +45,7 @@ public class RegistrationActivity extends AppCompatActivity {
         firebaseApp=FirebaseApp.getInstance("vendor");
         mAuth=FirebaseAuth.getInstance(firebaseApp);
         mUser=mAuth.getCurrentUser();
-        databaseReference= FirebaseDatabase.getInstance().getReference().child("vendorDatabase");
+        databaseReference= FirebaseDatabase.getInstance().getReference().child("vendorDatabase").child(mUser.getUid());
         mobile.setText(mUser.getPhoneNumber());
         mobile.setEnabled(false);
 
@@ -58,8 +61,29 @@ public class RegistrationActivity extends AppCompatActivity {
 
             }
         });
+
+        retireve();
     }
 
+    public void retireve(){
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    name.setText(snapshot.child("vendor_name").getValue().toString());
+                    address.setText(snapshot.child("vendor_address").getValue().toString());
+                    Intent intent=new Intent(RegistrationActivity.this,VendorDashboardActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
     public void submitUser(){
         HashMap<String,Object> map=new HashMap<>();
         map.put("vendor_name",name.getText().toString());

@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Glavage">
-        <activity android:name=".vendor.VendorDashboardActivity"></activity>
+        <activity android:name=".vendor.HostelActivity" />
+        <activity android:name=".vendor.VendorSettingsActivity" />
+        <activity android:name=".vendor.VendorDashboardActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

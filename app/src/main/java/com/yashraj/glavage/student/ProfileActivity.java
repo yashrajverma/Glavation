@@ -1,14 +1,17 @@
 package com.yashraj.glavage.student;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -23,13 +26,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.yashraj.glavage.R;
 
-import java.util.HashMap;import android.app.ProgressDialog;
+import java.util.HashMap;
 
 public class ProfileActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private Button GoButton;
-    private TextInputEditText mobileEditText,nameEditText,hostelEditText,room_noEditText;
+    private TextInputEditText mobileEditText,nameEditText,room_noEditText;
+    private Spinner hostel_spinner;
+    String[] hostel_array = {"A Block","B Block","C Block","D Block","E Block","F Block","G Block","H Block","I Block","J Block","Wing 1",
+            "Wing 2","Wing 3","Wing 4","Wing 5"};
+    private ArrayAdapter<String> adp;
     private String  mobileStringText="",nameStringText="",hostelStringText="",room_noStringText="";
     DatabaseReference userDatabase;
     private String TAG=ProfileActivity.class.getName();
@@ -43,12 +50,16 @@ public class ProfileActivity extends AppCompatActivity {
         mUser=mAuth.getCurrentUser();
         userDatabase= FirebaseDatabase.getInstance().getReference().child("userDatabase");
 
+        hostel_spinner=findViewById(R.id.hostel_spinner);
+        adp = new ArrayAdapter<String>(ProfileActivity.this, android.R.layout.simple_list_item_1, hostel_array);
+        adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        hostel_spinner.setAdapter(adp);
+
         progressBar=new ProgressDialog(this);
         GoButton=findViewById(R.id.go_button);
         mobileEditText=findViewById(R.id.mobile_editText);
         nameEditText=findViewById(R.id.name_editText);
         room_noEditText=findViewById(R.id.room_no_editText);
-        hostelEditText=findViewById(R.id.hostel_editText);
         nameEditText.setText(mUser.getDisplayName());
 
 
@@ -59,7 +70,7 @@ public class ProfileActivity extends AppCompatActivity {
                 progressBar.show();
 //                logout();
                 if(nameEditText.getText().toString().isEmpty() && mobileEditText.getText().toString().isEmpty()
-                && room_noEditText.getText().toString().isEmpty() && hostelEditText.getText().toString().isEmpty()){
+                && room_noEditText.getText().toString().isEmpty() && hostel_spinner.getSelectedItem().toString().isEmpty()){
 
                     progressBar.dismiss();
                     Toast.makeText(getApplicationContext(), "Enter All Fields", Toast.LENGTH_LONG).show();
@@ -75,7 +86,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
     private void registerUser(){
         mobileStringText=mobileEditText.getText().toString();
-        hostelStringText=hostelEditText.getText().toString();
+        hostelStringText=hostel_spinner.getSelectedItem().toString();
         room_noStringText=room_noEditText.getText().toString();
         nameStringText=nameEditText.getText().toString();
         HashMap<String,Object> userMap=new HashMap();
@@ -114,7 +125,7 @@ public class ProfileActivity extends AppCompatActivity {
                     mobileEditText.setText(snapshot.child("user_mobile").getValue().toString());
                     nameEditText.setText(snapshot.child("user_name").getValue().toString());
                     room_noEditText.setText(snapshot.child("user_room_no").getValue().toString());
-                    hostelEditText.setText(snapshot.child("user_hostel").getValue().toString());
+                    hostel_spinner.setTooltipText((CharSequence) snapshot.child("user_hostel").getValue().toString());
                 }else {
                     progressBar.dismiss();
                 }

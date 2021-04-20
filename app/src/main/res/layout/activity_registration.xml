@@ -45,64 +45,69 @@
         android:padding="15dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="5dp">
-
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:orientation="vertical"
-            android:padding="15dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fill Out Fields"
-                android:textColor="@color/background"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <View
-                android:layout_width="80dp"
-                android:layout_height="2dp"
-                android:background="@color/background" />
-
-            <EditText
-                android:id="@+id/vendor_name"
+            android:layout_height="match_parent">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:hint="Enter Name"
-                android:textColorLink="@color/purple_200"/>
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical"
+                android:padding="15dp">
 
-            <EditText
-                android:id="@+id/vendor_mobile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:hint="Enter Mobile"
-                android:textColorLink="@color/purple_200"
-                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fill Out Fields"
+                    android:textColor="@color/background"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/vendor_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:hint="Enter Address"
-                android:textColorLink="@color/purple_200"/>
+                <View
+                    android:layout_width="80dp"
+                    android:layout_height="2dp"
+                    android:background="@color/background" />
 
-            <Button
-                android:id="@+id/vendor_submit_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Submit"
-                android:textColor="@color/white" />
+                <EditText
+                    android:id="@+id/vendor_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Enter Name"
+                    android:textColorLink="@color/purple_200"/>
 
-        </LinearLayout>
+                <EditText
+                    android:id="@+id/vendor_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Enter Mobile"
+                    android:textColorLink="@color/purple_200"
+                    />
+
+                <EditText
+                    android:id="@+id/vendor_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Enter Address"
+                    android:textColorLink="@color/purple_200"/>
+
+                <Button
+                    android:id="@+id/vendor_submit_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Submit"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+        </ScrollView>
+
+
 
     </androidx.cardview.widget.CardView>
 

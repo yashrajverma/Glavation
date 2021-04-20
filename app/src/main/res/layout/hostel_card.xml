@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="15dp">
+    <TextView
+        android:id="@+id/hostel_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wing 5"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
+        android:layout_centerVertical="true"/>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hostel_cardView"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/background"
+        android:visibility="gone"
+        app:cardCornerRadius="12dp">
+
+        <TextView
+            android:id="@+id/noti_badge"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:text=""
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            >
+        </TextView>
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>
